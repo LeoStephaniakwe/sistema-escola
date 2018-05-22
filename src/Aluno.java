@@ -56,10 +56,10 @@ public class Aluno {
     public void buscarPeloNome() {
         String busca = JOptionPane.showInputDialog(null,
                 "Digite o nome  parcial que deseja buscar:");
-    
-    
-}
-public void contabilizarPeloNome() {
+
+    }
+
+    public void contabilizarPeloNome() {
         String busca = JOptionPane.showInputDialog(null,
                 "Digite o nome para busca");
         int quantidadeDeRegistros = 0;
@@ -98,6 +98,47 @@ public void contabilizarPeloNome() {
         ceps[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu cep:");
         numeros[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o numero");
         complementos[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o complemento");
+
+    }
+
+    public void menu() {
+        int menu;
+        menu = Integer.parseInt(JOptionPane.showInputDialog(
+                "1-Cadastrar Cliente:"
+                        + "\n2 - Editar Aluno:"
+                        + "\n3 - Apresentar Informações:"
+                        + "\n4 - Buscar Pelo nome:"
+                        + "\n5 - Contabilizar Pelo nome:"
+                        + "\n6 - Buscar Pelo CPF:"
+                        + "\n7 - Listar Aluno"
+                        + "\n8 - Sair"));
+        while(menu != 8001){
+            switch(menu){
+                case 1: Aluno.cadastrar();
+                    break;
+                case 2: Aluno.editar();
+                    break;
+                case 3: Aluno.apresentarInfo();
+                    break;
+                case 4: Aluno.buscarPeloNome();
+                    break;
+                case 5: Aluno.contabilizarPeloNome();
+                    break;
+                case 6: Aluno.buscarPeloCpf();
+                    break;
+                case 7: Aluno.listar();
+                    break;
+                default: JOptionPane.showMessageDialog(null,"Opção inválida!!!!!");
+            }            
+        }
+    
+    
+    
+    
+    
+    
+    
     
     }
 }
+
