@@ -35,27 +35,32 @@ public class Aluno {
 
     }
 
-    public void apresentarInfo(int i) {
+    public void apresentarInfo(int posicao) {
         JOptionPane.showMessageDialog(null,
-                "Nome: " + nomes[i]
-                + "\nIdade: " + idades[i]
-                + "\nCPF: " + cpfs[i]
-                + "\nEstado: " + estados[i]
-                + "\nCidade: " + cidades[i]
-                + "\nBairro: " + bairros[i]
-                + "\nLogradouro: " + logradouros[i]
-                + "\nCEP: " + ceps[i]
-                + "\nNumero: " + numeros[i]
-                + "\nComplemento:" + complementos[i]
-                + "\nNotas:" + notas[i]
-                + "\nFaltas" + faltas[i]
-                + "\nObservações:" + observacoesGerais[i]);
+                "Nome: " + nomes[posicao]
+                + "\nIdade: " + idades[posicao]
+                + "\nCPF: " + cpfs[posicao]
+                + "\nEstado: " + estados[posicao]
+                + "\nCidade: " + cidades[posicao]
+                + "\nBairro: " + bairros[posicao]
+                + "\nLogradouro: " + logradouros[posicao]
+                + "\nCEP: " + ceps[posicao]
+                + "\nNumero: " + numeros[posicao]
+                + "\nComplemento:" + complementos[posicao]
+                + "\nNotas:" + notas[posicao]
+                + "\nFaltas" + faltas[posicao]
+                + "\nObservações:" + observacoesGerais[posicao]);
     }
 
     public void buscarPeloNome() {
         String busca = JOptionPane.showInputDialog(null,
                 "Digite o nome  parcial que deseja buscar:").toLowerCase().trim();
-
+        for(int i = 0 ; i < aluno++; i++){
+            if(nomes[i].contains(busca)){
+                apresentarInfo(i);
+            }
+        }
+        JOptionPane.showMessageDialog(null,"Opção inválida, registro não foi gerado!!!");
     }
 
     public void contabilizarPeloNome() {
@@ -68,6 +73,8 @@ public class Aluno {
             }
         }
     }
+    
+    
 
     public void buscarPeloCpf() {
         String cpfBusca = JOptionPane.showInputDialog("Digite o CPF que desejas buscar").replace(".", "").replace("-", "");
@@ -76,6 +83,7 @@ public class Aluno {
                 apresentarInfo(i);
             }
         }
+        JOptionPane.showMessageDialog(null, "Registo inválido!");
     }
 
     public void listar() {

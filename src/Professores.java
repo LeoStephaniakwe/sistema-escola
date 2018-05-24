@@ -59,7 +59,7 @@ public class Professores {
 
     public void buscarPeloNome() {
         String busca = JOptionPane.showInputDialog(null,
-                "Digite o nome  parcial que deseja buscar:");
+                "Digite o nome  parcial que deseja buscar:").toLowerCase().trim();
     }
 
     public void contabilizarPeloNome() {
@@ -96,14 +96,14 @@ public class Professores {
         sexos[posicao] = JOptionPane.showInputDialog((nomes[posicao] + " Digite o seu sexo:")).charAt(0);
         cpfs[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu CPF").replace(".", "").replace("-", "");
         estados[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu estado").trim().toUpperCase();
-        cidades[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite a sua cidade:");
-        logradouros[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu logradouro:");
-        ceps[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu cep:");
+        cidades[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite a sua cidade:").trim().toUpperCase();
+        logradouros[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu logradouro:").trim().toUpperCase();
+        ceps[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu cep:").trim().toUpperCase();
         numeros[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o numero");
-        complementos[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o complemento");
-        materia[posicao] = JOptionPane.showInputDialog(nomes[posicao] + "Qual a materia lescionada?");
-        cargaHoraria[i] = Double.parseDouble(JOptionPane.showInputDialog(nomes[posicao] + "Carga horaria estimada"));
-        formacao[i] = JOptionPane.showInputDialog(nomes[posicao] + "Méritos?");
+        complementos[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o complemento").trim().toUpperCase();
+        materia[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Qual a materia lescionada?").trim().toUpperCase();
+        cargaHoraria[i] = Double.parseDouble(JOptionPane.showInputDialog(nomes[posicao] + " Carga horaria estimada"));
+        formacao[i] = JOptionPane.showInputDialog(nomes[posicao] + "Méritos?").trim().toUpperCase();
         salario[i] = Double.parseDouble(JOptionPane.showInputDialog(nomes[posicao] + "Salario:"));
     }
 
