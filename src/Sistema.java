@@ -26,16 +26,16 @@ public class Sistema {
                     professor.menu();
                     break;
                 case 3:
-                    //apresentarInfo();
+                    //apresentarInfo.menu();
                     break;
                 case 4:
-                    //buscarPeloNome();
+                    //buscarPeloNome.menu();
                     break;
                 case 5:
-                   // contabilizarPeloNome();
+                   //contabilizarPeloNome();
                     break;
                 case 6:
-                    //buscarPeloCpf();
+                    //buscarPeloCpf.menu();
                     break;
                 case 7:
                    // listar();
@@ -45,8 +45,11 @@ public class Sistema {
                 default:
                     JOptionPane.showMessageDialog(null, "Opção inválida!!!!!");
             }
-            menu = Integer.parseInt(javax.swing.JOptionPane.showInputDialog(
-                "1-Aluno"));
+            menu = Integer.parseInt(javax.swing.JOptionPane.showInputDialog(null,
+                        "1 - Aluno" +
+                        "\n2 - Professor",
+                        "JAVA > C#",
+                        JOptionPane.PLAIN_MESSAGE));
         }
     }
 }
