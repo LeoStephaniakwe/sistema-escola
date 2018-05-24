@@ -41,19 +41,19 @@ public class Professores {
     public void apresentarInfo(int i) {
         JOptionPane.showMessageDialog(null,
                 "Salario"
-                        + salario[i] + "Nome: " + nomes[i]
-                        + "\nIdade: " + idades[i]
-                        + "\nCPF: " + cpfs[i]
-                        + "\nEstado: " + estados[i]
-                        + "\nCidade: " + cidades[i]
-                        + "\nBairro: " + bairros[i]
-                        + "\nLogradouro: " + logradouros[i]
-                        + "\nCEP: " + ceps[i]
-                        + "\nNumero: " + numeros[i]
-                        + "\nComplemento:" + complementos[i]
-                        + "\nMatéria" + materia[i]
-                        + "Carga Horária" + cargaHoraria[i]
-                        + "Formação" + formacao[i]);
+                + salario[i] + "Nome: " + nomes[i]
+                + "\nIdade: " + idades[i]
+                + "\nCPF: " + cpfs[i]
+                + "\nEstado: " + estados[i]
+                + "\nCidade: " + cidades[i]
+                + "\nBairro: " + bairros[i]
+                + "\nLogradouro: " + logradouros[i]
+                + "\nCEP: " + ceps[i]
+                + "\nNumero: " + numeros[i]
+                + "\nComplemento:" + complementos[i]
+                + "\nMatéria" + materia[i]
+                + "Carga Horária" + cargaHoraria[i]
+                + "Formação" + formacao[i]);
 
     }
 
@@ -105,8 +105,37 @@ public class Professores {
         cargaHoraria[i] = Double.parseDouble(JOptionPane.showInputDialog(nomes[posicao] + "Carga horaria estimada"));
         formacao[i] = JOptionPane.showInputDialog(nomes[posicao] + "Méritos?");
         salario[i] = Double.parseDouble(JOptionPane.showInputDialog(nomes[posicao] + "Salario:"));
+    }
 
+    public void menu() {
+        int menu = Integer.parseInt(JOptionPane.showInputDialog(
+                "1-Cadastrar Professor:"
+                + "\n2 - Editar Professor:"
+                + "\n3 - Buscar Pelo nome:"
+                + "\n4 - Contabilizar Pelo nome:"
+                + "\n5 - Buscar Pelo CPF:"
+                + "\n6 - Listar Professor"));
+        switch (menu) {
+            case 1:
+                cadastrar();
+                break;
+            case 2:
+                editar();
+                break;
+            case 3:
+                buscarPeloNome();
+                break;
+            case 4:
+                contabilizarPeloNome();
+                break;
+            case 5:
+                buscarPeloCpf();
+                break;
+            case 6:
+                listar();
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opção inválida!!!!!");
+        }
     }
 }
-
-    

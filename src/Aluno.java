@@ -1,4 +1,3 @@
-//CADASTRO ALUNO
 
 import javax.swing.JOptionPane;
 
@@ -23,6 +22,7 @@ public class Aluno {
     public void cadastrar() {
         solicitarInformacao(aluno++);
         aluno++;
+        apresentarInfo(aluno);
     }
 
     public void editar() {
@@ -50,12 +50,11 @@ public class Aluno {
                 + "\nNotas:" + notas[i]
                 + "\nFaltas" + faltas[i]
                 + "\nObservações:" + observacoesGerais[i]);
-
     }
 
     public void buscarPeloNome() {
         String busca = JOptionPane.showInputDialog(null,
-                "Digite o nome  parcial que deseja buscar:");
+                "Digite o nome  parcial que deseja buscar:").toLowerCase().trim();
 
     }
 
@@ -102,43 +101,36 @@ public class Aluno {
     }
 
     public void menu() {
-        int menu;
-        menu = Integer.parseInt(JOptionPane.showInputDialog(
-                "1-Cadastrar Cliente:"
-                        + "\n2 - Editar Aluno:"
-                        + "\n3 - Apresentar Informações:"
-                        + "\n4 - Buscar Pelo nome:"
-                        + "\n5 - Contabilizar Pelo nome:"
-                        + "\n6 - Buscar Pelo CPF:"
-                        + "\n7 - Listar Aluno"
-                        + "\n8 - Sair"));
-        while(menu != 8001){
-            switch(menu){
-                case 1: Aluno.cadastrar();
-                    break;
-                case 2: Aluno.editar();
-                    break;
-                case 3: Aluno.apresentarInfo();
-                    break;
-                case 4: Aluno.buscarPeloNome();
-                    break;
-                case 5: Aluno.contabilizarPeloNome();
-                    break;
-                case 6: Aluno.buscarPeloCpf();
-                    break;
-                case 7: Aluno.listar();
-                    break;
-                default: JOptionPane.showMessageDialog(null,"Opção inválida!!!!!");
-            }            
+        int menu = Integer.parseInt(JOptionPane.showInputDialog(
+                "1-Cadastrar Aluno:"
+                + "\n2 - Editar Aluno:"
+                + "\n3 - Buscar Pelo nome:"
+                + "\n4 - Contabilizar Pelo nome:"
+                + "\n5 - Buscar Pelo CPF:"
+                + "\n6 - Listar Aluno"));
+        switch (menu) {
+            case 1:
+                cadastrar();
+                break;
+            case 2:
+                editar();
+                break;
+            case 3:
+                buscarPeloNome();
+                break;
+            case 4:
+                contabilizarPeloNome();
+                break;
+            case 5:
+                buscarPeloCpf();
+                break;
+            case 6:
+                listar();
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opção inválida!!!!!");
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    }
-}
 
+    }
+
+}
