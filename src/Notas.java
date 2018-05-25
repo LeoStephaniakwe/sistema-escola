@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
  */
 public class Notas {
 
-    int quantidadeNotasMaximas = 4;
+    static int quantidadeNotasMaximas = 4;
     double[] portugues = new double[quantidadeNotasMaximas];
     double[] matematica = new double[quantidadeNotasMaximas];
     double[] quimica = new double[quantidadeNotasMaximas];
@@ -21,44 +21,39 @@ public class Notas {
     double[] alemao = new double[quantidadeNotasMaximas];
     double[] artes = new double[quantidadeNotasMaximas];
     double[] informatica = new double[quantidadeNotasMaximas];
+    static String[] apresentarBoletim = new String[quantidadeNotasMaximas];
     int notas = 0;
 
-    public void cadastrarNota() {[
-        for (int i = 0; < quantidadeNotasMaximas; i++) {
+    public void cadastrarNota() {
+        for (int i = 0; i < quantidadeNotasMaximas; i++) {
             solicitarNota(i);
         }
-        apresentarInfo(notas);
+        apresentarNotas();
     }
 
-    public void editarNota() {
-        String busca = JOptionPane.showInputDialog(null, "Digite o nome que deseja editar as notas!!");
-        for (int i = 0; i < notas; i++) {
-            if (notas[i].equals(busca)) {
-                solicitarNota(i);
-            }
-        }
+    public String apresentarNotaDeMateria(String nome, double[] materia) {
+        return nome + ": " + materia[0] + " - " + materia[1] + " - " + materia[2] + " - " + materia[3] + "\n";
     }
 
-    public void apresentarNotas(int i) {
+    public void apresentarNotas() {
         JOptionPane.showMessageDialog(null,
-                "Português: " + portugues[i]
-                + "Matemática: " + matematica[i]
-                + "Biologia: " + biologia[i]
-                + "Quimica: " + quimica[i]
-                + "Fisica: " + fisica[i]
-                + "Filosofia: " + filosofia[i]
-                + "Sociologia: " + sociologia[i]
-                + "Educação Fisica: " + educacaoFisica[i]
-                + "Ensino Religioso: " + ensinoReligioso[i]
-                + "Inglês: " + ingles[i]
-                + "Alemão: " + alemao[i]
-                + "Artes: " + artes[i]
-                + "Informática" + informatica[i]);
-
+                apresentarNotaDeMateria("Portugues", portugues)
+                + apresentarNotaDeMateria("Matematica", matematica)
+                + apresentarNotaDeMateria("biologia", biologia)
+                + apresentarNotaDeMateria("quimica", quimica)
+                + apresentarNotaDeMateria("fisica", fisica)
+                + apresentarNotaDeMateria("filosofia", filosofia)
+                + apresentarNotaDeMateria("sociologia", sociologia)
+                + apresentarNotaDeMateria("educacaoFisica", educacaoFisica)
+                + apresentarNotaDeMateria("ensinoReligioso", ensinoReligioso)
+                + apresentarNotaDeMateria("ingles", ingles)
+                + apresentarNotaDeMateria("alemao", alemao)
+                + apresentarNotaDeMateria("artes", artes)
+                + apresentarNotaDeMateria("informatica", informatica));
     }
 
     private void solicitarNota(int i) {
-        portugues[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
+        portugues[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a " + (i + 1) + " nota de portugues:"));
         matematica[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
         quimica[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
         fisica[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
@@ -66,18 +61,18 @@ public class Notas {
         sociologia[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
         educacaoFisica[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
         ensinoReligioso[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
-        ingles[i]= Double.parseDouble(JOptionPane.showInputDialog(null,"Insira a nota:"));
-        alemao[i]= Double.parseDouble(JOptionPane.showInputDialog(null,"Insira a nota:"));
-        artes[i]= Double.parseDouble(JOptionPane.showInputDialog(null,"Insira a nota:"));
-        informatica[i]= Double.parseDouble(JOptionPane.showInputDialog(null,"Insira a nota:"));
+        ingles[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
+        alemao[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
+        artes[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
+        informatica[i] = Double.parseDouble(JOptionPane.showInputDialog(null, "Insira a nota:"));
     }
 
-    public String apresentarBoletim() {
-        String texto = "";
-        for (int i = 0; i < quantidadeNotasMaximas; i++) {
-            texto += portugues[i] + "   - " + 
-            
+    public void apresentarBoletim() {
+        for (int i = 0; i < apresentarBoletim.length; i++) {
+            apresentarBoletim[i] = "";
         }
-        return texto;
+        for (int i = 0; i < quantidadeNotasMaximas; i++) {
+            apresentarBoletim[i] += portugues[i] + "   - \n";
+        }
     }
 }
