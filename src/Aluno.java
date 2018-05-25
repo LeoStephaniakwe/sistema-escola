@@ -3,6 +3,8 @@ import javax.swing.JOptionPane;
 
 public class Aluno {
 
+    Notas notasoutro = new Notas();
+
     String[] nomes = new String[100];
     int[] idades = new int[100];
     char[] sexos = new char[100];
@@ -14,15 +16,23 @@ public class Aluno {
     String[] ceps = new String[100];
     String[] numeros = new String[100];
     String[] complementos = new String[100];
-    double[] notas = new double[100];
     int[] faltas = new int[100];
     String[] observacoesGerais = new String[100];
+    Notas[] notas = new Notas[100];
     int aluno = 0;
+    String apresentarBoletim[] = new String[0];
 
     public void cadastrar() {
-        solicitarInformacao(aluno++);
-        aluno++;
+        if (Notas.apresentarBoletim.length == 0) {
+            for (int j = 0; j < Notas.apresentarBoletim.length; j++) {
+                apresentarBoletim = new String[Notas.apresentarBoletim.length];
+                apresentarBoletim[j] = Notas.apresentarBoletim[j];
+            }
+
+        }
+        solicitarInformacao(aluno);
         apresentarInfo(aluno);
+        aluno++;
     }
 
     public void editar() {
@@ -35,32 +45,33 @@ public class Aluno {
 
     }
 
-    public void apresentarInfo(int posicao) {
+    public void apresentarInfo(int i) {
+
         JOptionPane.showMessageDialog(null,
-                "Nome: " + nomes[posicao]
-                + "\nIdade: " + idades[posicao]
-                + "\nCPF: " + cpfs[posicao]
-                + "\nEstado: " + estados[posicao]
-                + "\nCidade: " + cidades[posicao]
-                + "\nBairro: " + bairros[posicao]
-                + "\nLogradouro: " + logradouros[posicao]
-                + "\nCEP: " + ceps[posicao]
-                + "\nNumero: " + numeros[posicao]
-                + "\nComplemento:" + complementos[posicao]
-                + "\nNotas:" + notas[posicao]
-                + "\nFaltas" + faltas[posicao]
-                + "\nObservações:" + observacoesGerais[posicao]);
+                "Nome: " + nomes[i]
+                + "\nIdade: " + idades[i]
+                + "\nCPF: " + cpfs[i]
+                + "\nEstado: " + estados[i]
+                + "\nCidade: " + cidades[i]
+                + "\nBairro: " + bairros[i]
+                + "\nLogradouro: " + logradouros[i]
+                + "\nCEP: " + ceps[i]
+                + "\nNumero: " + numeros[i]
+                + "\nComplemento:" + complementos[i]
+        );
+
     }
 
     public void buscarPeloNome() {
         String busca = JOptionPane.showInputDialog(null,
                 "Digite o nome  parcial que deseja buscar:").toLowerCase().trim();
-        for(int i = 0 ; i < aluno++; i++){
-            if(nomes[i].contains(busca)){
+        for (int i = 0; i < aluno; i++) {
+            if (nomes[i].contains(busca)) {
                 apresentarInfo(i);
+                return;
             }
         }
-        JOptionPane.showMessageDialog(null,"Opção inválida, registro não foi gerado!!!");
+        JOptionPane.showMessageDialog(null, "Opção inválida, registro não foi gerado!!!");
     }
 
     public void contabilizarPeloNome() {
@@ -73,8 +84,6 @@ public class Aluno {
             }
         }
     }
-    
-    
 
     public void buscarPeloCpf() {
         String cpfBusca = JOptionPane.showInputDialog("Digite o CPF que desejas buscar").replace(".", "").replace("-", "");
@@ -105,12 +114,12 @@ public class Aluno {
         ceps[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o seu cep:");
         numeros[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o numero");
         complementos[posicao] = JOptionPane.showInputDialog(nomes[posicao] + " Digite o complemento");
-
+        //notasoutro.cadastrarNota();
     }
 
     public void menu() {
         int menu = Integer.parseInt(JOptionPane.showInputDialog(
-                "1-Cadastrar Aluno:"
+                "1 - Cadastrar Aluno:"
                 + "\n2 - Editar Aluno:"
                 + "\n3 - Buscar Pelo nome:"
                 + "\n4 - Contabilizar Pelo nome:"
@@ -134,6 +143,9 @@ public class Aluno {
                 break;
             case 6:
                 listar();
+            case 7:
+                apresentarBoletim();
+
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opção inválida!!!!!");
@@ -141,4 +153,14 @@ public class Aluno {
 
     }
 
+    private void apresentarBoletim() {
+        String busca = JOptionPane.showInputDialog(null,
+                "Digite o nome  parcial que deseja buscar:").toLowerCase().trim();
+        for (int i = 0; i < aluno; i++) {
+            if (nomes[i].contains(busca)) {
+                JOptionPane.showInputDialog(null, apresentarBoletim[i]);
+            }
+
+        }
+    }
 }
